@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>z3p.l0ve</title>
-<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606811773786">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606815225198">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="z3p.l0ve - Atom Feed" href="https://zpdad26.github.io//atom.xml">
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://zpdad26.github.io/">
-  <img class="avatar" src="https://zpdad26.github.io//images/avatar.png?v=1606811773786" alt="">
+  <img class="avatar" src="https://zpdad26.github.io//images/avatar.png?v=1606815225198" alt="">
   </a>
   <h1 class="site-title">
     z3p.l0ve
@@ -70,6 +70,99 @@
 
     
         <div class="post-container">
+  
+    <article class="post">
+      <a href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">
+        <h2 class="post-title">各种类型的sql注入原理</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-12-01
+        </span>
+        <span>
+          9 min read
+        </span>
+        
+      </div>
+      
+      <div class="post-abstract">
+        <p>本文讲述常见的sql注入基本类型的原理，具体的例子就以后由题目再进行总结吧。</p>
+<h2 id="目录">目录</h2>
+<pre><code>最基础的注入-union注入攻击
+Boolean注入攻击-布尔盲注
+报错注入攻击
+时间注入攻击-时间盲注
+堆叠查询注入攻击
+二次注入攻击
+宽字节注入攻击
+base64注入攻击
+cookie注入攻击-http请求头参数注入
+XFF注入攻击-http请求头参数注入
+知道绝对路径的注入
+</code></pre>
+<h3 id="1union">1.UNION</h3>
+<p>UNION操作符用于合并两个或多个SELECT语句的结果集，而且UNION内部的SELECT语句必须拥有相同数量的列，列也必须拥有相似的数据类型，同时，每条SELCCT语句中的列的顺序必须相同</p>
+<h4 id="流程">流程：</h4>
+<p>1.确保两张表结构一致<br>
+2.判断时字符型注入还是数字型注入<br>
+3.使用ORDER BY 查询列数。<br>
+4.获取数据库名。<br>
+5.获取数据库中的所有表名。<br>
+6.获取数据库的表中的所有字段名<br>
+7.获取字段中的数据</p>
+<h3 id="2boolean注入攻击-布尔盲注">2.Boolean注入攻击-布尔盲注</h3>
+<p>查看现象，能报错，但没有报错信息，正确查询也显示不了查询内容就属于布尔盲注，只存在两种状态，对或错；<br>
+由页面的两种不同返回的状态来判定我们的闭合规则；<br>
+为了方便，我们这里假设返回正确用“yes”，返回错误用“no”来表示这两种状态<br>
+找到闭合规则后，我们在闭合规则里面  and 1=1 和 and 1=2 测试一下，看看最后返回是不是两种状态；<br>
+布尔盲注要用到<code>length()和substr()</code>语句，用两种状态来猜解数据库、表名等的长度和正确字母；<br>
+先用 <code>and length(database())&gt;2</code>来猜数据库的长度，使用的是二分法；<br>
+再用 <code>and substr(database(),1,1)='t'</code> 来确定第一个字母，可用burp跑，26个字母,哪个字母返回yes则代表第一个字母就是它；<br>
+and substr(database(),2,1)='t' 代表当前数据库的第二个字母；<br>
+最后结合长度，成功的将数据库猜解出来；<br>
+后面的操作跟union注入的步骤差不多了，只是sql语句写在 上文的 database() 处。</p>
+<h3 id="3报错注入攻击">3.报错注入攻击</h3>
+<p>1.只要注入点有sql报错信息，那么就可以使用报错注入；<br>
+2.还是一样，引号报错，然后找到闭合规则，页面正常显示，则可以在闭合规则中开始写入报错注入的sql语句；<br>
+3.updatexml报错获取当前数据库：</p>
+<pre><code>and updatexml(1,concat(0x7e,(select database()),0x7e),1)
+</code></pre>
+<p>4.floor报错获取当前数据库：</p>
+<pre><code>and (select 1 from (select count(*),concat((database()),floor (rand(0)*2))x from information_schema.tables group by x)a)
+</code></pre>
+<p>5.两种方式都可行，如果第一个不行就试试第二个<br>
+6.接着可以利用select语句替换掉上面database()来继续获取数据库中的表名、字段名，查询语句和union注入攻击的语句相同；<br>
+7.只不过这里不能再使用group_concat了，因为报错注入只显示一条结果，所以需要使用limit语句；</p>
+<h3 id="4时间注入攻击-时间盲注">4.时间注入攻击-时间盲注</h3>
+<p>没有明确的现象，不管是对是错都返回一个状态；<br>
+但是如果用sleep(5)方法，能让响应时间延迟为5秒以上，那么就为时间盲注；<br>
+1.我们用sleep(5)函数构造了一个时间延时的状态，因此，我们又有了两种状态，像布尔盲注一样可以根据这两种状态来判定数据库、表名和字段名的长度和正确的每个字母；<br>
+2.同样的找到正确的闭合规则，当然，这个闭合规则得配合着 and sleep(5)语句来构造，哪一个闭合规则执行了sleep(5)，那么就是正确得闭合规则；<br>
+3.时间盲注配合着  if(A,B,C)  语句结合使用，含义是：如果A是 true，则返回B（也就是执行B），否则返回C（执行C）；<br>
+那么判断当前数据库名的长度的语句为：</p>
+<pre><code> if (length(database())&gt;1,sleep(5),1)
+</code></pre>
+<p>就是说如果数据库长度大于1，那么响应延时5秒，否则执行select 1(也就是不延时)，由此来推出数据库长度。<br>
+判断当前数据库名的第一个和第二个字母的语句：</p>
+<pre><code>    if(substr(database(),1,1)='s',sleep(5),1)
+
+    if(substr(database(),2,1)='s',sleep(5),1)
+</code></pre>
+<p>只有第一个字母等于26个字母中正确的字母时，才会延时5秒，因此可以通过burp或者sqlmap来跑。<br>
+根据数据库名长度以此内推即可得出完整的数据库的库命、表名、字段名和具体内容。</p>
+<h3 id="5堆叠查询注入攻击">5.堆叠查询注入攻击</h3>
+<p>1.可以使用堆叠注入的地方也可以使用布尔盲注与时间盲注；<br>
+2.同样先找出正确的闭合规则，然后也看两种状态来猜解库名、表名等；<br>
+3. 堆叠注入的语句为</p>
+<pre><code>    ;select if(length(database())&gt;1,sleep(3),1)
+    ;select if(substr(database(),1,1)='r',sleep(3),1)
+</code></pre>
+<p>按照原理来说，分号后面可以执行新sql语句，但是很多时候没必要，如果遇到其他注入方法（或者绕过方式）不行的情况下可以试试这个注入方式；不是很常用。</p>
+<h3 id="6二次注入攻击">6.二次注入攻击</h3>
+<p>二次注入一共有两个url，url一用来注入，也就是注入点，插入sql语句的地方，另外一个url用来返回信息；</p>
+
+      </div>
+    </article>
   
     <article class="post">
       <a href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">
