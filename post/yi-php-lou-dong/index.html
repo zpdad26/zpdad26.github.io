@@ -1,24 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://zpdad26.github.io/</id>
-    <title>z3p.l0ve</title>
-    <updated>2020-12-01T05:39:55.822Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://zpdad26.github.io/"/>
-    <link rel="self" href="https://zpdad26.github.io/atom.xml"/>
-    <subtitle>NO PATCH FOR STUPID!</subtitle>
-    <logo>https://zpdad26.github.io/images/avatar.png</logo>
-    <icon>https://zpdad26.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, z3p.l0ve</rights>
-    <entry>
-        <title type="html"><![CDATA[一.PHP漏洞]]></title>
-        <id>https://zpdad26.github.io/post/yi-php-lou-dong/</id>
-        <link href="https://zpdad26.github.io/post/yi-php-lou-dong/">
-        </link>
-        <updated>2020-11-27T04:51:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：</p>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>一.PHP漏洞 | z3p.l0ve</title>
+<meta name="description" content="NO PATCH FOR STUPID!">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606801192094">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://zpdad26.github.io/">
+        <img class="avatar" src="https://zpdad26.github.io//images/avatar.png?v=1606801192094" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://zpdad26.github.io/">
+        <h1 class="site-title">z3p.l0ve</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://zpdad26.github.io//post-images/yi-php-lou-dong.png')">
+            </div>
+          
+          <h2 class="post-title">一.PHP漏洞</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-11-27</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://zpdad26.github.io/tag/6VbkyJn5q/">
+                    PHP漏洞
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://zpdad26.github.io/tag/t6ZgoeJrR6/">
+                    CTF
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：</p>
 <!-- more -->
 <h3 id="一php语言特性">一.PHP语言特性：</h3>
 <h3 id="11比较操作符导致的漏洞弱类型">1.1比较操作符“==”导致的漏洞（弱类型）</h3>
@@ -193,6 +281,50 @@ echo&quot;public!&quot;;
 </code></pre>
 <p>get auth=1时，网页上会输出private！<br>
 import_request_variables(‘G’)指定导入GET请求中的变量，从而导致变量覆盖</p>
-]]></content>
-    </entry>
-</feed>
+
+          </div>
+        </div>
+
+        
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">NO PATCH FOR STUPID!</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
