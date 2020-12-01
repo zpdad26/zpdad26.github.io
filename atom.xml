@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zpdad26.github.io/</id>
     <title>z3p.l0ve</title>
-    <updated>2020-12-01T05:49:27.568Z</updated>
+    <updated>2020-12-01T08:35:04.034Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zpdad26.github.io/"/>
     <link rel="self" href="https://zpdad26.github.io/atom.xml"/>
@@ -10,6 +10,179 @@
     <logo>https://zpdad26.github.io/images/avatar.png</logo>
     <icon>https://zpdad26.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, z3p.l0ve</rights>
+    <entry>
+        <title type="html"><![CDATA[mysql基础语法]]></title>
+        <id>https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/</id>
+        <link href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">
+        </link>
+        <updated>2020-12-01T08:13:37.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="一些最重要的-sql-命令">一些最重要的 SQL 命令:</h2>
+<pre><code>CREATE DATABASE - 创建新数据库
+ALTER DATABASE - 修改数据库
+CREATE TABLE - 创建新表
+ALTER TABLE - 变更（改变）表
+DROP TABLE - 删除表
+SELECT - 从数据库中提取数据
+UPDATE - 更新数据库中的数据
+DELETE - 从数据库中删除数据
+INSERT INTO - 向数据库中插入新数据
+CREATE INDEX - 创建索引（搜索键）
+DROP INDEX - 删除索引
+</code></pre>
+<h2 id="select-语句">SELECT 语句</h2>
+<p>SELECT 语句用于从数据库中选取数据<br>
+语法：</p>
+<pre><code>SELECT column_name,column_name FROM table_name; 
+SELECT * FROM table_name; 
+</code></pre>
+<h2 id="select-distinct-语句">SELECT DISTINCT 语句</h2>
+<pre><code>SELECT DISTINCT column_name,column_name FROM table_name; 
+</code></pre>
+<h2 id="where-子句">WHERE 子句</h2>
+<p>WHERE 子句用于提取那些满足指定标准的记录<br>
+语法：</p>
+<pre><code>ELECT column_name,column_name FROM table_name WHERE column_name operator value;
+</code></pre>
+<p>举例：</p>
+<pre><code>--从 &quot;Websites&quot; 表中选取国家为 &quot;CN&quot; 的所有网站 
+SELECT * FROM Websites WHERE country='CN'; 
+</code></pre>
+<p>注：SQL 使用单引号来环绕文本值，如果是数值字段，不要使用引号</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="一些最重要的-sql-命令">一些最重要的 SQL 命令:</h2>
+<pre><code>CREATE DATABASE - 创建新数据库
+ALTER DATABASE - 修改数据库
+CREATE TABLE - 创建新表
+ALTER TABLE - 变更（改变）表
+DROP TABLE - 删除表
+SELECT - 从数据库中提取数据
+UPDATE - 更新数据库中的数据
+DELETE - 从数据库中删除数据
+INSERT INTO - 向数据库中插入新数据
+CREATE INDEX - 创建索引（搜索键）
+DROP INDEX - 删除索引
+</code></pre>
+<h2 id="select-语句">SELECT 语句</h2>
+<p>SELECT 语句用于从数据库中选取数据<br>
+语法：</p>
+<pre><code>SELECT column_name,column_name FROM table_name; 
+SELECT * FROM table_name; 
+</code></pre>
+<h2 id="select-distinct-语句">SELECT DISTINCT 语句</h2>
+<pre><code>SELECT DISTINCT column_name,column_name FROM table_name; 
+</code></pre>
+<h2 id="where-子句">WHERE 子句</h2>
+<p>WHERE 子句用于提取那些满足指定标准的记录<br>
+语法：</p>
+<pre><code>ELECT column_name,column_name FROM table_name WHERE column_name operator value;
+</code></pre>
+<p>举例：</p>
+<pre><code>--从 &quot;Websites&quot; 表中选取国家为 &quot;CN&quot; 的所有网站 
+SELECT * FROM Websites WHERE country='CN'; 
+</code></pre>
+<p>注：SQL 使用单引号来环绕文本值，如果是数值字段，不要使用引号</p>
+<!-- more -->
+<h3 id="where-子句中的运算符">WHERE 子句中的运算符：</h3>
+<p>运算符描述=等于&lt;&gt;不等于。</p>
+<p>注释：在 SQL 的一些版本中，该操作符可被写成 !=&gt;大于&lt;小于&gt;=大于等于&lt;=小于等于BETWEEN在某个范围内LIKE搜索某种模式IN指定针对某个列的多个可能值</p>
+<!-- more -->
+<h3 id="where-子句-2">Where 子句：</h3>
+<p>搜索 empno 等于 7900 的数据：</p>
+<pre><code>Select * from emp where empno=7900; 
+</code></pre>
+<h3 id="where-条件筛选行">Where +条件（筛选行）：</h3>
+<p>条件：列，比较运算符，值</p>
+<p>比较运算符包涵：= &gt; &lt; &gt;= ,&lt;=, !=,&lt;&gt; 表示（不等于）</p>
+<pre><code>Select * from emp where ename='SMITH'; 
+</code></pre>
+<p>例子中的 SMITH 用单引号引起来，表示是字符串，字符串要区分大小写。</p>
+<!-- more -->
+<h2 id="逻辑运算">逻辑运算：</h2>
+<p>1.And:与 同时满足两个条件的值。</p>
+<pre><code>Select * from emp where sal &gt; 2000 and sal &lt; 3000; 
+</code></pre>
+<p>2.Or:或 满足其中一个条件的值</p>
+<pre><code>Select * from emp where sal &gt; 2000 or comm &gt; 500;//查询 emp 表中 SAL 大于 2000 或 COMM 大于500的值。
+</code></pre>
+<p>3.Not:非 满足不包含该条件的值。</p>
+<pre><code>select * from emp where not sal &gt; 1500; //查询EMP表中 sal 小于等于 1500 的值。
+</code></pre>
+<h4 id="逻辑运算的优先级-not-and-or">逻辑运算的优先级：() not and or</h4>
+<h3 id="特殊条件">特殊条件：</h3>
+<h4 id="1空值判断-is-null">1.空值判断： is null</h4>
+<pre><code>Select * from emp where comm is null; //查询 emp 表中 comm 列中的空值。
+</code></pre>
+<h4 id="2between-and-在-之间的值">2.between and (在 之间的值)</h4>
+<pre><code>Select * from emp where sal between 1500 and 3000; //查询 emp 表中 SAL 列中大于 1500 的小于 3000 的值。
+</code></pre>
+<p>注意：大于等于 1500 且小于等于 3000， 1500 为下限，3000 为上限，下限在前，上限在后，查询的范围包涵有上下限的值。</p>
+<p>####3.In</p>
+<pre><code>Select * from emp where sal in (5000,3000,1500); //查询 EMP 表 SAL 列中等于 5000，3000，1500 的值。
+</code></pre>
+<h4 id="4like">4.like</h4>
+<pre><code>Select * from emp where ename like 'M%'; //查询 EMP 表中 Ename 列中有 M 的值，M 为要查询内容中的模糊信息。
+</code></pre>
+<p>% 表示多个字值，_ 下划线表示一个字符；<br>
+M% : 为能配符，正则表达式，表示的意思为模糊查询信息为 M 开头的。<br>
+%M% : 表示查询包含M的所有内容。<br>
+%M_ : 表示查询以M在倒数第二位的所有内容。</p>
+<h2 id="and-or-运算符">AND &amp; OR 运算符：</h2>
+<p>AND &amp; OR 运算符用于基于一个以上的条件对记录进行过滤</p>
+<pre><code>--从 &quot;Websites&quot; 表中选取 alexa 排名大于 &quot;15&quot; 且国家为 &quot;CN&quot; 或 &quot;USA&quot; 的所有网站 
+SELECT * FROM Websites WHERE alexa &gt; 15 AND (country='CN' OR count
+</code></pre>
+<h2 id="order-by-关键字">ORDER BY 关键字：</h2>
+<p>ORDER BY 关键字用于对结果集按照一个列或者多个列进行排序，ORDER BY 关键字默认按照升序对记录进行排序。如果需要按照降序对记录进行排序，可以使用 DESC 关键字<br>
+语法：</p>
+<pre><code>SELECT column_name,column_name FROM table_name 
+ORDER BY column_name,column_name ASC|DESC; 
+</code></pre>
+<!-- more -->
+<p>举例：</p>
+<pre><code>--从 &quot;Websites&quot; 表中选取所有网站，并按照 &quot;alexa&quot; 列排序 
+SELECT * FROM Websites ORDER BY alexa; 
+
+--从 &quot;Websites&quot; 表中选取所有网站，并按照 &quot;alexa&quot; 列降序排序 
+SELECT * FROM Websites ORDER BY alexa DESC; 
+
+--从 &quot;Websites&quot; 表中选取所有网站，并按照 &quot;country&quot; 和 &quot;alexa&quot; 列排序 
+SELECT * FROM Websites ORDER BY country,alexa; 
+</code></pre>
+<h2 id="insert-into-语句">INSERT INTO 语句：</h2>
+<p>INSERT INTO 语句用于向表中插入新记录<br>
+语法：<br>
+INSERT INTO 语句可以有两种编写形式。<br>
+第一种形式无需指定要插入数据的列名，只需提供被插入的值即可：</p>
+<pre><code>NSERT INTO table_name VALUES (value1,value2,value3,...); 
+</code></pre>
+<p>第二种形式需要指定列名及被插入的值：</p>
+<pre><code>INSERT INTO table_name (column1,column2,column3,...) VALUES (value1,valu
+</code></pre>
+<p>###注：insert into select 和select into from 的区别</p>
+<pre><code> --插入一行,要求表scorebak 必须存在 
+insert into scorebak select * from socre where neza='neza' 
+  
+--也是插入一行,要求表scorebak 不存在 
+select *  into scorebak from score  where neza='neza' 
+</code></pre>
+<p>##UPDATE 语句：<br>
+UPDATE 语句用于更新表中已存在的记录</p>
+<p>语法：</p>
+<pre><code>UPDATE table_name SET column1=value1,column2=value2,... 
+WHERE some_column=some_value; 
+</code></pre>
+<h2 id="delete-语句">DELETE 语句：</h2>
+<p>DELETE 语句用于删除表中的行<br>
+语法：</p>
+<pre><code>DELETE FROM table_name WHERE some_column=some_value; 
+</code></pre>
+<h3 id="删除所有数据">删除所有数据：</h3>
+<p>可以在不删除表的情况下，删除表中所有的行。这意味着表结构、属性、索引将保持不变：</p>
+<pre><code>DELETE FROM table_name; 
+DELETE * FROM table_name; 
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[一.PHP漏洞]]></title>
         <id>https://zpdad26.github.io/post/yi-php-lou-dong/</id>
