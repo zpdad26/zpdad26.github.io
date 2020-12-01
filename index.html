@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>z3p.l0ve</title>
-<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606815446587">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606817297883">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="z3p.l0ve - Atom Feed" href="https://zpdad26.github.io//atom.xml">
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://zpdad26.github.io/">
-  <img class="avatar" src="https://zpdad26.github.io//images/avatar.png?v=1606815446587" alt="">
+  <img class="avatar" src="https://zpdad26.github.io//images/avatar.png?v=1606817297883" alt="">
   </a>
   <h1 class="site-title">
     z3p.l0ve
@@ -70,6 +70,46 @@
 
     
         <div class="post-container">
+  
+    <article class="post">
+      <a href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/">
+        <h2 class="post-title">Sqlmap基本语法</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-12-01
+        </span>
+        <span>
+          2 min read
+        </span>
+        
+      </div>
+      
+        <a href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/" class="post-feature-image" style="background-image: url('https://zpdad26.github.io//post-images/sqlmap-ji-ben-yu-fa.jpg')">
+        </a>
+      
+      <div class="post-abstract">
+        <h2 id="1基本语法">1.基本语法</h2>
+<pre><code>sqlmap -u url --is-dba ：判断当前用户是否有管理员权限
+
+sqlmap -u url --roles ：列出数据库所有管理员角色
+
+sqlmap -u url --current-db ：查看当前数据库
+
+sqlmap -u url -D 库名 --tables  ：爆表
+
+sqlmap -u url -D 库名 -T 表明 --columns ：爆字段
+
+sqlmap -u url -D 库名 -T 表明 --C 字段名1，字段名2 --dump ：爆数据
+
+sqlmap -u url -D 库名 --dump-all ：爆出数据库中所有数据
+</code></pre>
+<p>如果我们想对抓取包进行爆破的话，<br>
+<code>sqlmap -r http.txt ：http.txt</code><br>
+使我们抓取的http请求包</p>
+
+      </div>
+    </article>
   
     <article class="post">
       <a href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">
