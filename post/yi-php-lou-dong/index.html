@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>一.PHP漏洞 | z3p.l0ve</title>
-<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606801327853">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606801762877">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="一.PHP漏洞 | z3p.l0ve - Atom Feed" href="https://zpdad26.github.io//atom.xml">
@@ -14,12 +14,12 @@
     <meta name="description" content="在学习完php基础知识后，将一些常见的php漏洞分析写在下面：
 
 一.PHP语言特性：
-1.1比较操作符“==”导致的漏洞（弱类型）
+1.1.1比较操作符“==”导致的漏洞（弱类型）
 $a==$b
 $a===$b
 
 $a==$b//等于TURE,类型转换后$a=$b
-$a===$b//全等..." />
+$a===$b//..." />
     <meta name="keywords" content="PHP漏洞,CTF" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -29,7 +29,7 @@ $a===$b//全等..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://zpdad26.github.io/">
-  <img class="avatar" src="https://zpdad26.github.io//images/avatar.png?v=1606801327853" alt="">
+  <img class="avatar" src="https://zpdad26.github.io//images/avatar.png?v=1606801762877" alt="">
   </a>
   <h1 class="site-title">
     z3p.l0ve
@@ -108,8 +108,8 @@ $a===$b//全等..." />
               <div class="post-content">
                 <p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：</p>
 <!-- more -->
-<h3 id="一php语言特性">一.PHP语言特性：</h3>
-<h3 id="11比较操作符导致的漏洞弱类型">1.1比较操作符“==”导致的漏洞（弱类型）</h3>
+<h2 id="一php语言特性">一.PHP语言特性：</h2>
+<h3 id="111比较操作符导致的漏洞弱类型">1.1.1比较操作符“==”导致的漏洞（弱类型）</h3>
 <pre><code>$a==$b
 $a===$b
 
@@ -117,10 +117,29 @@ $a==$b//等于TURE,类型转换后$a=$b
 $a===$b//全等TURE,如果$a=$b,那么他们的类型也相同
 </code></pre>
 <!-- more -->
-<p>如上图为php手册上的例子，可知道“==”的比较徽先进行类型转换，再进行比较。</p>
+<p>如上图为php手册上的例子，可知道“==”的比较会先进行类型转换，再进行比较。</p>
 <pre><code>&lt;?php
 'a'==0 // true '12a'==12 //true '1'==1 //true '1aaaa55sss66'==1 //true 
 </code></pre>
+<h3 id="112md5sha1漏洞">1.1.2md5&amp;sha1（）漏洞</h3>
+<p>首先了解到xex代表科学输入法，1e123456=1*10的123456次方。这里要说的是在遇到了0exxx这种字符串时，会将这种字符串解析为科学计数法，即上图两个式子就相等了</p>
+<pre><code>&quot;0x1e240&quot;==&quot;123456&quot; //true
+&quot;0x1e240&quot;==123456 //true
+&quot;0x1e240&quot;==&quot;1e240&quot;//false
+</code></pre>
+<p>这段话的意思就是在比较时，会先将字符串解析成十进制的再进行比较，图中0x1e240解析成十进制为123456</p>
+<pre><code>QNKCDZO
+240610708
+s878926199a
+s155964671a
+s214587387a
+s214587387a
+</code></pre>
+<p>md5()函数无法处理数组，如果传入的为数组，会返回NULL，所以两个数组经过加密后得到的都是NULL,也就是相等的。如下：</p>
+<pre><code>var_dump(@md5([]) == @md5([])) //bool(true) var_dump(@md5([]) === @md5([])) //bool(true)，@表示忽略警告 var_dump(null === null); //bool(true)
+</code></pre>
+<!-- more -->
+<p>sha1原理与md5()基本相同</p>
 <h3 id="12反序列化漏洞">1.2反序列化漏洞</h3>
 <h4 id="121-概念分析">1.2.1 概念分析：</h4>
 <p>序列化（serialization）在计算机科学的数据处理中，是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或经由网络中发送），以留待后续在相同或另一台计算机环境中，能恢复原先状态的过程。</p>
@@ -287,10 +306,10 @@ import_request_variables(‘G’)指定导入GET请求中的变量，从而导�
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
+<li><a href="#%E4%B8%80php%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7">一.PHP语言特性：</a>
 <ul>
-<li><a href="#%E4%B8%80php%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7">一.PHP语言特性：</a></li>
-<li><a href="#11%E6%AF%94%E8%BE%83%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%AF%BC%E8%87%B4%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%BC%B1%E7%B1%BB%E5%9E%8B">1.1比较操作符“==”导致的漏洞（弱类型）</a></li>
+<li><a href="#111%E6%AF%94%E8%BE%83%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%AF%BC%E8%87%B4%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%BC%B1%E7%B1%BB%E5%9E%8B">1.1.1比较操作符“==”导致的漏洞（弱类型）</a></li>
+<li><a href="#112md5sha1%E6%BC%8F%E6%B4%9E">1.1.2md5&amp;sha1（）漏洞</a></li>
 <li><a href="#12%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E">1.2反序列化漏洞</a>
 <ul>
 <li><a href="#121-%E6%A6%82%E5%BF%B5%E5%88%86%E6%9E%90">1.2.1 概念分析：</a></li>
