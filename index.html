@@ -4,102 +4,93 @@
     <meta charset="utf-8" >
 
 <title>z3p.l0ve</title>
+<meta name="description" content="NO PATCH FOR STUPID!">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606819482127">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606818958514">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
 
 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
-
-    <meta name="description" content="NO PATCH FOR STUPID!">
-    
   </head>
   <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://zpdad26.github.io/">
-        <img src="https://zpdad26.github.io//images/avatar.png?v=1606818958514" class="site-logo">
-        <h1 class="site-title">z3p.l0ve</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://zpdad26.github.io/">z3p.l0ve</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-          <a href="/" class="site-nav">
-            首页
-          </a>
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
         
-      
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
         
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
         
-      
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
         
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
+      </ul>
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      NO PATCH FOR STUPID!
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</nav>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
           
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/">
-                  <h2 class="post-title">Sqlmap基本语法</h2>
-                </a>
-                <div class="post-date">
-                  2020-12-01
-                </div>
-                <div class="post-abstract">
-                  <h2 id="1基本语法">1.基本语法</h2>
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/">Sqlmap基本语法</a>
+    </h2>
+    <p class="article-meta">
+      2020-12-01
+      
+    </p>
+    <p class="text-lead">
+      <h2 id="1基本语法">1.基本语法</h2>
 <pre><code>sqlmap -u url --is-dba ：判断当前用户是否有管理员权限
 
 sqlmap -u url --roles ：列出数据库所有管理员角色
@@ -118,26 +109,26 @@ sqlmap -u url -D 库名 --dump-all ：爆出数据库中所有数据
 <code>sqlmap -r http.txt ：http.txt</code><br>
 使我们抓取的http请求包</p>
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/">
-                  <div class="feature-container" style="background-image: url('https://zpdad26.github.io//post-images/sqlmap-ji-ben-yu-fa.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">
-                  <h2 class="post-title">各种类型的sql注入原理</h2>
-                </a>
-                <div class="post-date">
-                  2020-12-01
-                </div>
-                <div class="post-abstract">
-                  <p>本文讲述常见的sql注入基本类型的原理，具体的例子就以后由题目再进行总结吧。</p>
+    </p>
+    <div class="row">
+      <a href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">各种类型的sql注入原理</a>
+    </h2>
+    <p class="article-meta">
+      2020-12-01
+      
+    </p>
+    <p class="text-lead">
+      <p>本文讲述常见的sql注入基本类型的原理，具体的例子就以后由题目再进行总结吧。</p>
 <h2 id="目录">目录</h2>
 <pre><code>最基础的注入-union注入攻击
 Boolean注入攻击-布尔盲注
@@ -212,26 +203,26 @@ and substr(database(),2,1)='t' 代表当前数据库的第二个字母；<br>
 <h3 id="6二次注入攻击">6.二次注入攻击</h3>
 <p>二次注入一共有两个url，url一用来注入，也就是注入点，插入sql语句的地方，另外一个url用来返回信息；</p>
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">
-                  <div class="feature-container" style="background-image: url('https://zpdad26.github.io//post-images/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">
-                  <h2 class="post-title">mysql基础语法</h2>
-                </a>
-                <div class="post-date">
-                  2020-12-01
-                </div>
-                <div class="post-abstract">
-                  <h2 id="一些最重要的-sql-命令">一些最重要的 SQL 命令:</h2>
+    </p>
+    <div class="row">
+      <a href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">mysql基础语法</a>
+    </h2>
+    <p class="article-meta">
+      2020-12-01
+      
+    </p>
+    <p class="text-lead">
+      <h2 id="一些最重要的-sql-命令">一些最重要的 SQL 命令:</h2>
 <pre><code>CREATE DATABASE - 创建新数据库
 ALTER DATABASE - 修改数据库
 CREATE TABLE - 创建新表
@@ -264,67 +255,138 @@ SELECT * FROM Websites WHERE country='CN';
 </code></pre>
 <p>注：SQL 使用单引号来环绕文本值，如果是数值字段，不要使用引号</p>
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">
-                  <div class="feature-container" style="background-image: url('https://zpdad26.github.io//post-images/mysql-ji-chu-yu-fa.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zpdad26.github.io/post/yi-php-lou-dong/">
-                  <h2 class="post-title">PHP漏洞</h2>
-                </a>
-                <div class="post-date">
-                  2020-11-27
-                </div>
-                <div class="post-abstract">
-                  <p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：</p>
+    </p>
+    <div class="row">
+      <a href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://zpdad26.github.io/post/yi-php-lou-dong/">
-                  <div class="feature-container" style="background-image: url('https://zpdad26.github.io//post-images/yi-php-lou-dong.png')">
-                  </div>
-                </a>
-              
-            </article>
-          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://zpdad26.github.io/post/yi-php-lou-dong/">PHP漏洞</a>
+    </h2>
+    <p class="article-meta">
+      2020-11-27
+      
+        <a href="https://zpdad26.github.io/tag/6VbkyJn5q/" class="badge warning">
+          PHP漏洞
+        </a>
+      
+        <a href="https://zpdad26.github.io/tag/t6ZgoeJrR6/" class="badge success">
+          CTF
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：</p>
 
-          <div class="pagination-container">
+    </p>
+    <div class="row">
+      <a href="https://zpdad26.github.io/post/yi-php-lou-dong/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
+        </div>
+        
+        <div class="row flex-edges">
   
   
 </div>
 
-        </div>
       </div>
+      
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://zpdad26.github.io//images/avatar.png?v=1606819482127" class="no-responsive avatar">
+    <div class="text-muted">NO PATCH FOR STUPID!</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/">Sqlmap基本语法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">各种类型的sql注入原理</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">mysql基础语法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zpdad26.github.io/post/yi-php-lou-dong/">PHP漏洞</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://zpdad26.github.io/tag/6VbkyJn5q/" class="badge warning">
+          PHP漏洞
+        </a>
+      
+        <a href="https://zpdad26.github.io/tag/t6ZgoeJrR6/" class="badge secondary">
+          CTF
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
 
+    </div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
 <script type="application/javascript">
 
 AOS.init();
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+hljs.initHighlightingOnLoad()
 
 </script>
-
-
-  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad()
-  </script>
-
 
 
 
