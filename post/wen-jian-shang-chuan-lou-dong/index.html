@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>文件上传漏洞 | z3p.l0ve</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606829347308">
+<link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。这种攻击方式是最为直接和有效的，“文件上..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zpdad26.github.io/">
+        <img src="https://zpdad26.github.io//images/avatar.png?v=1606829347308" class="site-logo">
+        <h1 class="site-title">z3p.l0ve</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      NO PATCH FOR STUPID!
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">文件上传漏洞</h2>
+            <div class="post-date">2020-12-01</div>
+            
+            <div class="post-content" v-pre>
+              <p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。这种攻击方式是最为直接和有效的，“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
+<!-- more -->
+<h2 id="1iis-解析漏洞">1.IIS 解析漏洞</h2>
+<p>IIS6.0 在解析文件时存在以下两个解析漏洞 .</p>
+<p>①当建立 <code>*.asa</code> 、<code>*.asp</code> 格式的文件夹时 , 其目录下的任意文件豆浆被 IIS 当作 asp 文件 来解析 .</p>
+<p>② 在 IIS6.0 下 , 分 号 后面 的 扩 展 名 不 会 被 解 析 , 也 就 是 说 当 文 件 为 <code>*.asp;.jpg</code></p>
+<p>时,IIS6.0 同样会以 ASP脚本来执行 .</p>
+<p>##2.Apache 解析漏洞</p>
+<p>在 Apache 1.x 和 Apache 2.x 中存在解析漏洞 , 但他们与 IIS 解析漏洞不同 .</p>
+<p>Apache 在解析文件时有一个规则 : 当碰到不认识的扩展名时 , 将会从后向前解析 , 直到 碰到认识的扩展名位置 , 如果都不认识 , 则会暴露其源码 . 比如 :</p>
+<pre><code>php.rar.xx.aa
+</code></pre>
+<p>Apache 首先会解析 aa 扩展名 , 如果不认识则接着解析 xx 扩展名 , 这样一直遍历到认识 的扩展名为止 , 然后再将其进行解析 .</p>
+<p>##3.PHP CGI 解析漏洞</p>
+<p>在 PHP的配置文件中有一个关键的选项 :<code>cgi.fi: x_pathinfo</code>. 这个选项在某些版本是</p>
+<p>默认开启的 , 在开启时访问 url, 比如 :http://www.xxx.com/x.txt/x.php,x.php 是不存在的 文件 , 所以 php 将会向前递归解析 , 于是就造成了解析漏洞 . 由于这种漏洞常见于 IIS7.0 、 IIS7.5 、 Nginx 等 Web服务器 , 所以经常会被误认为是这些 Web服务器的解析漏洞 .</p>
+<p>##4.Nginx &lt;8.03 空字节代码执行漏洞</p>
+<p>影响版本 :0.5,0.6,0.7&lt;=0.7.65 0.8&lt;=0.8.37</p>
+<p>Nginx 在图片中嵌入 PHP代码 , 然后通过访问<code>xxx.jpg%00.php</code> 可以执行其中的代码 .<br>
+##5. 其他</p>
+<p>在 windows  环境下， <code>xx.jpg[ 空格 ]</code> 或 <code>xx.jpg.</code> 这两类文件都是不允许存在的 , 若这样命 名,windows 会默认除去空格或点 , 攻击者可以通过抓包 , 在文件名后加一个空格或者点绕过 黑名单 . 若上传成功 , 空格和点都会被 windows 自动消除 , 这样也可以 getshell.</p>
+<p>如果在 Apache 中 .htaccess 可被执行 . 且可被上传 . 那可以尝试在 .htaccess 中写入 :</p>
+<pre><code>SetHandlerapplication/x-httpd-php
+</code></pre>
+<p>然后再上传名称为 shell.jpg 的 webshell, 这样 shell.jpg 就可解析为 php 文件 .</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">
+                  <h3 class="post-title">
+                    各种类型的sql注入原理
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
