@@ -1,13 +1,20 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>各种类型的sql注入原理 | z3p.l0ve</title>
-<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606817297883">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606818185033">
 <link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="各种类型的sql注入原理 | z3p.l0ve - Atom Feed" href="https://zpdad26.github.io//atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 
@@ -22,84 +29,84 @@ Boolean注入攻击-布尔盲注
 宽字节注入攻击
 b..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://zpdad26.github.io/">
-  <img class="avatar" src="https://zpdad26.github.io//images/avatar.png?v=1606817297883" alt="">
-  </a>
-  <h1 class="site-title">
-    z3p.l0ve
-  </h1>
-  <p class="site-description">
-    NO PATCH FOR STUPID!
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zpdad26.github.io/">
+        <img src="https://zpdad26.github.io//images/avatar.png?v=1606818185033" class="site-logo">
+        <h1 class="site-title">z3p.l0ve</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      NO PATCH FOR STUPID!
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              各种类型的sql注入原理
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-12-01
-              </span>
-              <span>
-                9 min read
-              </span>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">各种类型的sql注入原理</h2>
+            <div class="post-date">2020-12-01</div>
             
-              <img class="post-feature-image" src="https://zpdad26.github.io//post-images/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li.jpg" alt="">
+              <div class="feature-container" style="background-image: url('https://zpdad26.github.io//post-images/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li.jpg')">
+              </div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p>本文讲述常见的sql注入基本类型的原理，具体的例子就以后由题目再进行总结吧。</p>
+            <div class="post-content" v-pre>
+              <p>本文讲述常见的sql注入基本类型的原理，具体的例子就以后由题目再进行总结吧。</p>
 <h2 id="目录">目录</h2>
 <pre><code>最基础的注入-union注入攻击
 Boolean注入攻击-布尔盲注
@@ -226,100 +233,45 @@ and substr(database(),2,1)='t' 代表当前数据库的第二个字母；<br>
 <!-- more -->
 <p>如果file、管理员权限都没有，那么另寻思路，日志、缓存写入等。</p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E7%9B%AE%E5%BD%95">目录</a>
-<ul>
-<li><a href="#1union">1.UNION</a>
-<ul>
-<li><a href="#%E6%B5%81%E7%A8%8B">流程：</a></li>
-</ul>
-</li>
-<li><a href="#2boolean%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8">2.Boolean注入攻击-布尔盲注</a></li>
-<li><a href="#3%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">3.报错注入攻击</a></li>
-<li><a href="#4%E6%97%B6%E9%97%B4%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8">4.时间注入攻击-时间盲注</a></li>
-<li><a href="#5%E5%A0%86%E5%8F%A0%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">5.堆叠查询注入攻击</a></li>
-<li><a href="#6%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">6.二次注入攻击</a></li>
-<li><a href="#7%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">7.宽字节注入攻击</a></li>
-<li><a href="#8base64%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">8.base64注入攻击</a></li>
-<li><a href="#9http%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%8F%82%E6%95%B0%E6%B3%A8%E5%85%A5-cookie%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">9.HTTP请求头参数注入-cookie注入攻击</a></li>
-<li><a href="#10http%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%8F%82%E6%95%B0%E6%B3%A8%E5%85%A5-xff%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">10.HTTP请求头参数注入-XFF注入攻击</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
-          </article>
-        </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">
+                  <h3 class="post-title">
+                    mysql基础语法
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">
-              <h3 class="post-title">
-                mysql基础语法
-              </h3>
-            </a>
+            
+
           </div>
-        
 
-        
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
+        </div>
       </div>
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+AOS.init();
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+</script>
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
+
+
+
   </body>
 </html>

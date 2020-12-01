@@ -1,13 +1,20 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>mysql基础语法 | z3p.l0ve</title>
-<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606817297883">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606818185033">
 <link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="mysql基础语法 | z3p.l0ve - Atom Feed" href="https://zpdad26.github.io//atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 
@@ -18,84 +25,84 @@ CREATE TABLE - 创建新表
 ALTER TABLE - 变更（改变）表
 DROP TABLE - 删除..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://zpdad26.github.io/">
-  <img class="avatar" src="https://zpdad26.github.io//images/avatar.png?v=1606817297883" alt="">
-  </a>
-  <h1 class="site-title">
-    z3p.l0ve
-  </h1>
-  <p class="site-description">
-    NO PATCH FOR STUPID!
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zpdad26.github.io/">
+        <img src="https://zpdad26.github.io//images/avatar.png?v=1606818185033" class="site-logo">
+        <h1 class="site-title">z3p.l0ve</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      NO PATCH FOR STUPID!
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              mysql基础语法
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-12-01
-              </span>
-              <span>
-                6 min read
-              </span>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">mysql基础语法</h2>
+            <div class="post-date">2020-12-01</div>
             
-              <img class="post-feature-image" src="https://zpdad26.github.io//post-images/mysql-ji-chu-yu-fa.jpg" alt="">
+              <div class="feature-container" style="background-image: url('https://zpdad26.github.io//post-images/mysql-ji-chu-yu-fa.jpg')">
+              </div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h2 id="一些最重要的-sql-命令">一些最重要的 SQL 命令:</h2>
+            <div class="post-content" v-pre>
+              <h2 id="一些最重要的-sql-命令">一些最重要的 SQL 命令:</h2>
 <pre><code>CREATE DATABASE - 创建新数据库
 ALTER DATABASE - 修改数据库
 CREATE TABLE - 创建新表
@@ -228,113 +235,45 @@ WHERE some_column=some_value;
 DELETE * FROM table_name; 
 </code></pre>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E4%B8%80%E4%BA%9B%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84-sql-%E5%91%BD%E4%BB%A4">一些最重要的 SQL 命令:</a></li>
-<li><a href="#select-%E8%AF%AD%E5%8F%A5">SELECT 语句</a></li>
-<li><a href="#select-distinct-%E8%AF%AD%E5%8F%A5">SELECT DISTINCT 语句</a></li>
-<li><a href="#where-%E5%AD%90%E5%8F%A5">WHERE 子句</a>
-<ul>
-<li><a href="#where-%E5%AD%90%E5%8F%A5%E4%B8%AD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6">WHERE 子句中的运算符：</a></li>
-<li><a href="#where-%E5%AD%90%E5%8F%A5-2">Where 子句：</a></li>
-<li><a href="#where-%E6%9D%A1%E4%BB%B6%E7%AD%9B%E9%80%89%E8%A1%8C">Where +条件（筛选行）：</a></li>
-</ul>
-</li>
-<li><a href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97">逻辑运算：</a><br>
-*
-<ul>
-<li><a href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7-not-and-or">逻辑运算的优先级：() not and or</a></li>
-<li><a href="#%E7%89%B9%E6%AE%8A%E6%9D%A1%E4%BB%B6">特殊条件：</a>
-<ul>
-<li><a href="#1%E7%A9%BA%E5%80%BC%E5%88%A4%E6%96%AD-is-null">1.空值判断： is null</a></li>
-<li><a href="#2between-and-%E5%9C%A8-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%80%BC">2.between and (在 之间的值)</a></li>
-<li><a href="#4like">4.like</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#and-or-%E8%BF%90%E7%AE%97%E7%AC%A6">AND &amp; OR 运算符：</a></li>
-<li><a href="#order-by-%E5%85%B3%E9%94%AE%E5%AD%97">ORDER BY 关键字：</a></li>
-<li><a href="#insert-into-%E8%AF%AD%E5%8F%A5">INSERT INTO 语句：</a></li>
-<li><a href="#delete-%E8%AF%AD%E5%8F%A5">DELETE 语句：</a>
-<ul>
-<li><a href="#%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE">删除所有数据：</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
-          </article>
-        </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zpdad26.github.io/post/yi-php-lou-dong/">
+                  <h3 class="post-title">
+                    PHP漏洞
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://zpdad26.github.io/post/yi-php-lou-dong/">
-              <h3 class="post-title">
-                PHP漏洞
-              </h3>
-            </a>
+            
+
           </div>
-        
 
-        
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
+        </div>
       </div>
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+AOS.init();
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+</script>
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
+
+
+
   </body>
 </html>
