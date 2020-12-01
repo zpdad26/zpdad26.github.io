@@ -4,100 +4,107 @@
     <meta charset="utf-8" >
 
 <title>PHP漏洞 | z3p.l0ve</title>
-<meta name="description" content="NO PATCH FOR STUPID!">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606819553438">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606827550732">
 <link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
 
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
+
+    <meta name="description" content="在学习完php基础知识后，将一些常见的php漏洞分析写在下面：
+
+一.PHP语言特性：
+1.1.1比较操作符“==”导致的漏洞（弱类型）
+$a==$b
+$a===$b
+
+$a==$b//等于TURE,类型转换后$a=$b
+$a===$b//..." />
+    <meta name="keywords" content="PHP漏洞,CTF" />
   </head>
   <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://zpdad26.github.io/">z3p.l0ve</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zpdad26.github.io/">
+        <img src="https://zpdad26.github.io//images/avatar.png?v=1606827550732" class="site-logo">
+        <h1 class="site-title">z3p.l0ve</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
         
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
+          <a href="/" class="site-nav">
+            首页
+          </a>
         
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
+      
         
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
         
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
+      
         
-      </ul>
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
     </div>
   </div>
-</nav>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      NO PATCH FOR STUPID!
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>PHP漏洞</h1>
-            <p class="article-meta">
-              2020-11-27
-              
-                <a href="https://zpdad26.github.io/tag/6VbkyJn5q/" class="badge secondary">
-                  PHP漏洞
-                </a>
-              
-                <a href="https://zpdad26.github.io/tag/t6ZgoeJrR6/" class="badge warning">
-                  CTF
-                </a>
-              
-            </p>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">PHP漏洞</h2>
+            <div class="post-date">2020-11-27</div>
             
-              <img src="https://zpdad26.github.io//post-images/yi-php-lou-dong.png" alt="PHP漏洞">
+              <div class="feature-container" style="background-image: url('https://zpdad26.github.io//post-images/yi-php-lou-dong.png')">
+              </div>
             
-            <div class="post-content">
+            <div class="post-content" v-pre>
               <p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：</p>
 <!-- more -->
 <h2 id="一php语言特性">一.PHP语言特性：</h2>
@@ -294,99 +301,49 @@ echo&quot;public!&quot;;
 import_request_variables(‘G’)指定导入GET请求中的变量，从而导致变量覆盖</p>
 
             </div>
-          </article>
+            
+              <div class="tag-container">
+                
+                  <a href="https://zpdad26.github.io/tag/6VbkyJn5q/" class="tag">
+                    PHP漏洞
+                  </a>
+                
+                  <a href="https://zpdad26.github.io/tag/t6ZgoeJrR6/" class="tag">
+                    CTF
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
         </div>
-        <div class="paper" data-aos="fade-in">
-          
-        </div>
-        
       </div>
-
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://zpdad26.github.io//images/avatar.png?v=1606819553438" class="no-responsive avatar">
-    <div class="text-muted">NO PATCH FOR STUPID!</div>
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/">Sqlmap基本语法</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">各种类型的sql注入原理</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">mysql基础语法</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://zpdad26.github.io/post/yi-php-lou-dong/">PHP漏洞</a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://zpdad26.github.io/tag/6VbkyJn5q/" class="badge success">
-          PHP漏洞
-        </a>
-      
-        <a href="https://zpdad26.github.io/tag/t6ZgoeJrR6/" class="badge success">
-          CTF
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zpdad26.github.io//atom.xml" target="_blank">RSS</a>
-  </div>
-</div>
-
-
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
 <script type="application/javascript">
 
 AOS.init();
 
-hljs.initHighlightingOnLoad()
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
 
 
 
