@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606827550732">
+<link rel="shortcut icon" href="https://zpdad26.github.io//favicon.ico?v=1606827959125">
 <link rel="stylesheet" href="https://zpdad26.github.io//styles/main.css">
 
 
@@ -18,14 +18,9 @@
 
 
 
-    <meta name="description" content="1.基本语法
-sqlmap -u url --is-dba ：判断当前用户是否有管理员权限
-
-sqlmap -u url --roles ：列出数据库所有管理员角色
-
-sqlmap -u url --current-db ：查看当前数据库
-..." />
-    <meta name="keywords" content="" />
+    <meta name="description" content="
+sqlmap是一个自动化的SQL注入工具，其主要功能是扫描，发现并利用给定的URL的SQL注入漏洞，目前支持的数据库是MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft A..." />
+    <meta name="keywords" content="sqlmap" />
   </head>
   <body>
     <div id="app" class="main">
@@ -34,7 +29,7 @@ sqlmap -u url --current-db ：查看当前数据库
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://zpdad26.github.io/">
-        <img src="https://zpdad26.github.io//images/avatar.png?v=1606827550732" class="site-logo">
+        <img src="https://zpdad26.github.io//images/avatar.png?v=1606827959125" class="site-logo">
         <h1 class="site-title">z3p.l0ve</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -97,13 +92,17 @@ sqlmap -u url --current-db ：查看当前数据库
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
             <h2 class="post-title">Sqlmap基本语法</h2>
-            <div class="post-date">2020-12-01</div>
+            <div class="post-date">2020-11-28</div>
             
               <div class="feature-container" style="background-image: url('https://zpdad26.github.io//post-images/sqlmap-ji-ben-yu-fa.jpg')">
               </div>
             
             <div class="post-content" v-pre>
-              <h2 id="1基本语法">1.基本语法</h2>
+              <!-- more -->
+<p>sqlmap是一个自动化的SQL注入工具，其主要功能是扫描，发现并利用给定的URL的SQL注入漏洞，目前支持的数据库是MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB。</p>
+<!-- more -->
+<!-- more -->
+<h2 id="1基本语法">1.基本语法</h2>
 <pre><code>sqlmap -u url --is-dba ：判断当前用户是否有管理员权限
 
 sqlmap -u url --roles ：列出数据库所有管理员角色
@@ -134,12 +133,20 @@ sqlmap -u url -D 库名 --dump-all ：爆出数据库中所有数据
 
             </div>
             
+              <div class="tag-container">
+                
+                  <a href="https://zpdad26.github.io/tag/qorgZPpbD/" class="tag">
+                    sqlmap
+                  </a>
+                
+              </div>
+            
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">
+                <a href="https://zpdad26.github.io/post/yi-php-lou-dong/">
                   <h3 class="post-title">
-                    各种类型的sql注入原理
+                    PHP漏洞
                   </h3>
                 </a>
               </div>

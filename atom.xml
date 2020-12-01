@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zpdad26.github.io/</id>
     <title>z3p.l0ve</title>
-    <updated>2020-12-01T12:59:13.094Z</updated>
+    <updated>2020-12-01T13:06:01.744Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zpdad26.github.io/"/>
     <link rel="self" href="https://zpdad26.github.io/atom.xml"/>
@@ -11,142 +11,15 @@
     <icon>https://zpdad26.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, z3p.l0ve</rights>
     <entry>
-        <title type="html"><![CDATA[Sqlmap基本语法]]></title>
-        <id>https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/</id>
-        <link href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/">
-        </link>
-        <updated>2020-12-01T09:56:30.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="1基本语法">1.基本语法</h2>
-<pre><code>sqlmap -u url --is-dba ：判断当前用户是否有管理员权限
-
-sqlmap -u url --roles ：列出数据库所有管理员角色
-
-sqlmap -u url --current-db ：查看当前数据库
-
-sqlmap -u url -D 库名 --tables  ：爆表
-
-sqlmap -u url -D 库名 -T 表明 --columns ：爆字段
-
-sqlmap -u url -D 库名 -T 表明 --C 字段名1，字段名2 --dump ：爆数据
-
-sqlmap -u url -D 库名 --dump-all ：爆出数据库中所有数据
-</code></pre>
-<p>如果我们想对抓取包进行爆破的话，<br>
-<code>sqlmap -r http.txt ：http.txt</code><br>
-使我们抓取的http请求包</p>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="1基本语法">1.基本语法</h2>
-<pre><code>sqlmap -u url --is-dba ：判断当前用户是否有管理员权限
-
-sqlmap -u url --roles ：列出数据库所有管理员角色
-
-sqlmap -u url --current-db ：查看当前数据库
-
-sqlmap -u url -D 库名 --tables  ：爆表
-
-sqlmap -u url -D 库名 -T 表明 --columns ：爆字段
-
-sqlmap -u url -D 库名 -T 表明 --C 字段名1，字段名2 --dump ：爆数据
-
-sqlmap -u url -D 库名 --dump-all ：爆出数据库中所有数据
-</code></pre>
-<p>如果我们想对抓取包进行爆破的话，<br>
-<code>sqlmap -r http.txt ：http.txt</code><br>
-使我们抓取的http请求包</p>
-<!-- more -->
-<p><code>sqlmap -r http.txt -p username</code>  ：指定参数，当有多个参数而你又知道username参数存在SQL漏洞，你就可以使用-p指定参数进行探测</p>
-<h2 id="2结合bpsuite的使用方法">2.结合bpsuite的使用方法：</h2>
-<p>（1）浏览器打开目标地址http://www.antian365.com<br>
-（2）配置burp代理(127.0.0.1:8080)以拦截请求<br>
-（3）点击登录表单的submit按钮<br>
-（4）Burp会拦截到了我们的登录POST请求<br>
-（5）把这个post请求复制为txt, 我这命名为post.txt 然后把它放至sqlmap目录下<br>
-（6）运行sqlmap并使用如下命令：</p>
-<h3 id="3详细的sqlmap使用攻略和技巧分析">3.<a href="https://www.freebuf.com/sectool/164608.html">详细的SQLMap使用攻略和技巧分析</a></h3>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[各种类型的sql注入原理]]></title>
         <id>https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/</id>
         <link href="https://zpdad26.github.io/post/ge-chong-lei-xing-de-sql-zhu-ru-yuan-li/">
         </link>
         <updated>2020-12-01T08:37:05.000Z</updated>
-        <summary type="html"><![CDATA[<p>本文讲述常见的sql注入基本类型的原理，具体的例子就以后由题目再进行总结吧。</p>
-<h2 id="目录">目录</h2>
-<pre><code>最基础的注入-union注入攻击
-Boolean注入攻击-布尔盲注
-报错注入攻击
-时间注入攻击-时间盲注
-堆叠查询注入攻击
-二次注入攻击
-宽字节注入攻击
-base64注入攻击
-cookie注入攻击-http请求头参数注入
-XFF注入攻击-http请求头参数注入
-知道绝对路径的注入
-</code></pre>
-<h3 id="1union">1.UNION</h3>
-<p>UNION操作符用于合并两个或多个SELECT语句的结果集，而且UNION内部的SELECT语句必须拥有相同数量的列，列也必须拥有相似的数据类型，同时，每条SELCCT语句中的列的顺序必须相同</p>
-<h4 id="流程">流程：</h4>
-<p>1.确保两张表结构一致<br>
-2.判断时字符型注入还是数字型注入<br>
-3.使用ORDER BY 查询列数。<br>
-4.获取数据库名。<br>
-5.获取数据库中的所有表名。<br>
-6.获取数据库的表中的所有字段名<br>
-7.获取字段中的数据</p>
-<h3 id="2boolean注入攻击-布尔盲注">2.Boolean注入攻击-布尔盲注</h3>
-<p>查看现象，能报错，但没有报错信息，正确查询也显示不了查询内容就属于布尔盲注，只存在两种状态，对或错；<br>
-由页面的两种不同返回的状态来判定我们的闭合规则；<br>
-为了方便，我们这里假设返回正确用“yes”，返回错误用“no”来表示这两种状态<br>
-找到闭合规则后，我们在闭合规则里面  and 1=1 和 and 1=2 测试一下，看看最后返回是不是两种状态；<br>
-布尔盲注要用到<code>length()和substr()</code>语句，用两种状态来猜解数据库、表名等的长度和正确字母；<br>
-先用 <code>and length(database())&gt;2</code>来猜数据库的长度，使用的是二分法；<br>
-再用 <code>and substr(database(),1,1)='t'</code> 来确定第一个字母，可用burp跑，26个字母,哪个字母返回yes则代表第一个字母就是它；<br>
-and substr(database(),2,1)='t' 代表当前数据库的第二个字母；<br>
-最后结合长度，成功的将数据库猜解出来；<br>
-后面的操作跟union注入的步骤差不多了，只是sql语句写在 上文的 database() 处。</p>
-<h3 id="3报错注入攻击">3.报错注入攻击</h3>
-<p>1.只要注入点有sql报错信息，那么就可以使用报错注入；<br>
-2.还是一样，引号报错，然后找到闭合规则，页面正常显示，则可以在闭合规则中开始写入报错注入的sql语句；<br>
-3.updatexml报错获取当前数据库：</p>
-<pre><code>and updatexml(1,concat(0x7e,(select database()),0x7e),1)
-</code></pre>
-<p>4.floor报错获取当前数据库：</p>
-<pre><code>and (select 1 from (select count(*),concat((database()),floor (rand(0)*2))x from information_schema.tables group by x)a)
-</code></pre>
-<p>5.两种方式都可行，如果第一个不行就试试第二个<br>
-6.接着可以利用select语句替换掉上面database()来继续获取数据库中的表名、字段名，查询语句和union注入攻击的语句相同；<br>
-7.只不过这里不能再使用group_concat了，因为报错注入只显示一条结果，所以需要使用limit语句；</p>
-<h3 id="4时间注入攻击-时间盲注">4.时间注入攻击-时间盲注</h3>
-<p>没有明确的现象，不管是对是错都返回一个状态；<br>
-但是如果用sleep(5)方法，能让响应时间延迟为5秒以上，那么就为时间盲注；<br>
-1.我们用sleep(5)函数构造了一个时间延时的状态，因此，我们又有了两种状态，像布尔盲注一样可以根据这两种状态来判定数据库、表名和字段名的长度和正确的每个字母；<br>
-2.同样的找到正确的闭合规则，当然，这个闭合规则得配合着 and sleep(5)语句来构造，哪一个闭合规则执行了sleep(5)，那么就是正确得闭合规则；<br>
-3.时间盲注配合着  if(A,B,C)  语句结合使用，含义是：如果A是 true，则返回B（也就是执行B），否则返回C（执行C）；<br>
-那么判断当前数据库名的长度的语句为：</p>
-<pre><code> if (length(database())&gt;1,sleep(5),1)
-</code></pre>
-<p>就是说如果数据库长度大于1，那么响应延时5秒，否则执行select 1(也就是不延时)，由此来推出数据库长度。<br>
-判断当前数据库名的第一个和第二个字母的语句：</p>
-<pre><code>    if(substr(database(),1,1)='s',sleep(5),1)
-
-    if(substr(database(),2,1)='s',sleep(5),1)
-</code></pre>
-<p>只有第一个字母等于26个字母中正确的字母时，才会延时5秒，因此可以通过burp或者sqlmap来跑。<br>
-根据数据库名长度以此内推即可得出完整的数据库的库命、表名、字段名和具体内容。</p>
-<h3 id="5堆叠查询注入攻击">5.堆叠查询注入攻击</h3>
-<p>1.可以使用堆叠注入的地方也可以使用布尔盲注与时间盲注；<br>
-2.同样先找出正确的闭合规则，然后也看两种状态来猜解库名、表名等；<br>
-3. 堆叠注入的语句为</p>
-<pre><code>    ;select if(length(database())&gt;1,sleep(3),1)
-    ;select if(substr(database(),1,1)='r',sleep(3),1)
-</code></pre>
-<p>按照原理来说，分号后面可以执行新sql语句，但是很多时候没必要，如果遇到其他注入方法（或者绕过方式）不行的情况下可以试试这个注入方式；不是很常用。</p>
-<h3 id="6二次注入攻击">6.二次注入攻击</h3>
-<p>二次注入一共有两个url，url一用来注入，也就是注入点，插入sql语句的地方，另外一个url用来返回信息；</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>本文讲述常见的sql注入基本类型的原理，具体的例子就以后由题目再进行总结吧。</p>
+        <content type="html"><![CDATA[<!-- more -->
+<p>本文讲述常见的sql注入基本类型的原理，具体的例子就以后由题目再进行总结吧。</p>
+<!-- more -->
+<!-- more -->
 <h2 id="目录">目录</h2>
 <pre><code>最基础的注入-union注入攻击
 Boolean注入攻击-布尔盲注
@@ -280,40 +153,13 @@ and substr(database(),2,1)='t' 代表当前数据库的第二个字母；<br>
         <link href="https://zpdad26.github.io/post/mysql-ji-chu-yu-fa/">
         </link>
         <updated>2020-12-01T08:13:37.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="一些最重要的-sql-命令">一些最重要的 SQL 命令:</h2>
-<pre><code>CREATE DATABASE - 创建新数据库
-ALTER DATABASE - 修改数据库
-CREATE TABLE - 创建新表
-ALTER TABLE - 变更（改变）表
-DROP TABLE - 删除表
-SELECT - 从数据库中提取数据
-UPDATE - 更新数据库中的数据
-DELETE - 从数据库中删除数据
-INSERT INTO - 向数据库中插入新数据
-CREATE INDEX - 创建索引（搜索键）
-DROP INDEX - 删除索引
-</code></pre>
-<h2 id="select-语句">SELECT 语句</h2>
-<p>SELECT 语句用于从数据库中选取数据<br>
-语法：</p>
-<pre><code>SELECT column_name,column_name FROM table_name; 
-SELECT * FROM table_name; 
-</code></pre>
-<h2 id="select-distinct-语句">SELECT DISTINCT 语句</h2>
-<pre><code>SELECT DISTINCT column_name,column_name FROM table_name; 
-</code></pre>
-<h2 id="where-子句">WHERE 子句</h2>
-<p>WHERE 子句用于提取那些满足指定标准的记录<br>
-语法：</p>
-<pre><code>ELECT column_name,column_name FROM table_name WHERE column_name operator value;
-</code></pre>
-<p>举例：</p>
-<pre><code>--从 &quot;Websites&quot; 表中选取国家为 &quot;CN&quot; 的所有网站 
-SELECT * FROM Websites WHERE country='CN'; 
-</code></pre>
-<p>注：SQL 使用单引号来环绕文本值，如果是数值字段，不要使用引号</p>
+        <summary type="html"><![CDATA[<p>MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一。<br>
+文章列出一些mysql基础语法。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<h2 id="一些最重要的-sql-命令">一些最重要的 SQL 命令:</h2>
+        <content type="html"><![CDATA[<p>MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一。<br>
+文章列出一些mysql基础语法。</p>
+<!-- more -->
+<h2 id="一些最重要的-sql-命令">一些最重要的 SQL 命令:</h2>
 <pre><code>CREATE DATABASE - 创建新数据库
 ALTER DATABASE - 修改数据库
 CREATE TABLE - 创建新表
@@ -448,14 +294,56 @@ DELETE * FROM table_name;
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Sqlmap基本语法]]></title>
+        <id>https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/</id>
+        <link href="https://zpdad26.github.io/post/sqlmap-ji-ben-yu-fa/">
+        </link>
+        <updated>2020-11-28T09:56:30.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p>sqlmap是一个自动化的SQL注入工具，其主要功能是扫描，发现并利用给定的URL的SQL注入漏洞，目前支持的数据库是MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB。</p>
+<!-- more -->
+<!-- more -->
+<h2 id="1基本语法">1.基本语法</h2>
+<pre><code>sqlmap -u url --is-dba ：判断当前用户是否有管理员权限
+
+sqlmap -u url --roles ：列出数据库所有管理员角色
+
+sqlmap -u url --current-db ：查看当前数据库
+
+sqlmap -u url -D 库名 --tables  ：爆表
+
+sqlmap -u url -D 库名 -T 表明 --columns ：爆字段
+
+sqlmap -u url -D 库名 -T 表明 --C 字段名1，字段名2 --dump ：爆数据
+
+sqlmap -u url -D 库名 --dump-all ：爆出数据库中所有数据
+</code></pre>
+<p>如果我们想对抓取包进行爆破的话，<br>
+<code>sqlmap -r http.txt ：http.txt</code><br>
+使我们抓取的http请求包</p>
+<!-- more -->
+<p><code>sqlmap -r http.txt -p username</code>  ：指定参数，当有多个参数而你又知道username参数存在SQL漏洞，你就可以使用-p指定参数进行探测</p>
+<h2 id="2结合bpsuite的使用方法">2.结合bpsuite的使用方法：</h2>
+<p>（1）浏览器打开目标地址http://www.antian365.com<br>
+（2）配置burp代理(127.0.0.1:8080)以拦截请求<br>
+（3）点击登录表单的submit按钮<br>
+（4）Burp会拦截到了我们的登录POST请求<br>
+（5）把这个post请求复制为txt, 我这命名为post.txt 然后把它放至sqlmap目录下<br>
+（6）运行sqlmap并使用如下命令：</p>
+<h3 id="3详细的sqlmap使用攻略和技巧分析">3.<a href="https://www.freebuf.com/sectool/164608.html">详细的SQLMap使用攻略和技巧分析</a></h3>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[PHP漏洞]]></title>
         <id>https://zpdad26.github.io/post/yi-php-lou-dong/</id>
         <link href="https://zpdad26.github.io/post/yi-php-lou-dong/">
         </link>
         <updated>2020-11-27T04:51:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：</p>
+        <summary type="html"><![CDATA[<p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：<br>
+后续例子就由题目来继续补充</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：</p>
+        <content type="html"><![CDATA[<p>在学习完php基础知识后，将一些常见的php漏洞分析写在下面：<br>
+后续例子就由题目来继续补充</p>
 <!-- more -->
 <h2 id="一php语言特性">一.PHP语言特性：</h2>
 <h3 id="111比较操作符导致的漏洞弱类型">1.1.1比较操作符“==”导致的漏洞（弱类型）</h3>
